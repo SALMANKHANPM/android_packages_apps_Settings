@@ -113,6 +113,7 @@
     <string name="corvus_version">Corvus version</string>
     <string name="corvus_version_default">Unknown</string>
     <string name="keywords_corvus_version">corvus version</string>
+    <string name="about_device_name">Device</string>
 
     <!-- About phone screen, build date -->
     <string name="build_date">Build date</string>
@@ -202,5 +203,8 @@
 
     <!-- Custom Doze -->
     <string name="ambient_display_custom_title">Ambient Display</string>
+
+    <string name="about_device_name">Device</string>
+
 </resources>
 
