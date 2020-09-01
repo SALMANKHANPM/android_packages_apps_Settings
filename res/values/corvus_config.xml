@@ -32,7 +32,4 @@
     <string name="hidden_label">Hidden</string>
     <string name="long_label">Long</string>
 
-    <!-- Whether to show Google account avatar in settings -->
-    <bool name="config_show_google_account_avatar">false</bool>
-
 </resources>
