@@ -315,8 +315,8 @@ public class SettingsGateway {
             MediaControlsSettings.class.getName(),
             RavenLair.class.getName(),
             LiveDisplaySettings.class.getName(),
-            GamingMode.class.getName(),
-            RunningServices.class.getName()
+            RunningServices.class.getName(),
+            GamingMode.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -358,7 +358,7 @@ public class SettingsGateway {
             UserBackupSettingsActivity.class.getName(),
             Settings.RavenLairActivity.class.getName(),
             StartThemes.class.getName(),
-            Settings.GamingModeActivity.class.getName(),
             Settings.DevRunningServicesActivity.class.getName(),
+            Settings.GamingModeActivity.class.getName(),
     };
 }
