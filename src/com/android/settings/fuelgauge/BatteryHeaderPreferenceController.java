@@ -42,6 +42,7 @@ public class BatteryHeaderPreferenceController extends BasePreferenceController
         implements PreferenceControllerMixin, LifecycleObserver, OnStart {
     @VisibleForTesting
     static final String KEY_BATTERY_HEADER = "battery_header";
+    private static final String ANNOTATION_URL = "url";
 
     private Activity mActivity;
     private PreferenceFragmentCompat mHost;
