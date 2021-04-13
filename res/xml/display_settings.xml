@@ -172,6 +172,18 @@
         android:title="@string/enable_blurs_on_windows_title"
         android:summary="@string/enable_blurs_on_windows_summary" />
 
+    <!-- Ambient Display -->
+        <Preference
+            android:key="ambient_display_custom"
+            android:persistent="false"
+            android:title="@string/ambient_display_custom_title"
+            android:icon="@drawable/ic_settings_ambient_display" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.custom.ambient.display"
+                android:targetClass="com.custom.ambient.display.DozeSettings" />
+        </Preference>
+
     <ListPreference
         android:key="theme"
         android:title="@string/device_theme"
