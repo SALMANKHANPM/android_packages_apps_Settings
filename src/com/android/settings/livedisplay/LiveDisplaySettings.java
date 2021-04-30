@@ -138,12 +138,14 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.livedisplay);
 
-        PreferenceCategory liveDisplayPrefs = findPreference(KEY_CATEGORY_LIVE_DISPLAY);
-        PreferenceCategory advancedPrefs = findPreference(KEY_CATEGORY_ADVANCED);
+        PreferenceCategory liveDisplayPrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_LIVE_DISPLAY);
+        PreferenceCategory advancedPrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_ADVANCED);
 
         int adaptiveMode = mLiveDisplayManager.getMode();
 
-        mLiveDisplay = findPreference(KEY_LIVE_DISPLAY);
+        mLiveDisplay = (ListPreference) findPreference(KEY_LIVE_DISPLAY);
         mLiveDisplay.setValue(String.valueOf(adaptiveMode));
 
         mModeEntries = res.getStringArray(
@@ -194,7 +196,7 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements
         mLiveDisplay.setEntryValues(mModeValues);
         mLiveDisplay.setOnPreferenceChangeListener(this);
 
-        mDisplayTemperature = findPreference(KEY_LIVE_DISPLAY_TEMPERATURE);
+        mDisplayTemperature = (DisplayTemperature) findPreference(KEY_LIVE_DISPLAY_TEMPERATURE);
         if (isNightDisplayAvailable) {
             if (!mConfig.hasFeature(MODE_OUTDOOR)) {
                 liveDisplayPrefs.removePreference(mLiveDisplay);
@@ -202,7 +204,7 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements
             liveDisplayPrefs.removePreference(mDisplayTemperature);
         }
 
-        mColorProfile = findPreference(KEY_LIVE_DISPLAY_COLOR_PROFILE);
+        mColorProfile = (ListPreference) findPreference(KEY_LIVE_DISPLAY_COLOR_PROFILE);
         if (liveDisplayPrefs != null && mColorProfile != null
                 && (!mConfig.hasFeature(FEATURE_DISPLAY_MODES) || !updateDisplayModes())) {
             liveDisplayPrefs.removePreference(mColorProfile);
@@ -211,7 +213,7 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements
             mColorProfile.setOnPreferenceChangeListener(this);
         }
 
-        mOutdoorMode = findPreference(KEY_LIVE_DISPLAY_AUTO_OUTDOOR_MODE);
+        mOutdoorMode = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_AUTO_OUTDOOR_MODE);
         if (liveDisplayPrefs != null && mOutdoorMode != null
                 // MODE_AUTO implies automatic outdoor mode on HWC2
                 && (isNightDisplayAvailable || !mConfig.hasFeature(MODE_OUTDOOR))) {
@@ -219,7 +221,7 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements
             mOutdoorMode = null;
         }
 
-        mReadingMode = findPreference(KEY_LIVE_DISPLAY_READING_ENHANCEMENT);
+        mReadingMode = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_READING_ENHANCEMENT);
         if (liveDisplayPrefs != null && mReadingMode != null
                 && !mHardware.isSupported(LineageHardwareManager.FEATURE_READING_ENHANCEMENT)) {
             liveDisplayPrefs.removePreference(mReadingMode);
@@ -228,28 +230,28 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements
             mReadingMode.setOnPreferenceChangeListener(this);
         }
 
-        mLowPower = findPreference(KEY_LIVE_DISPLAY_LOW_POWER);
+        mLowPower = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_LOW_POWER);
         if (advancedPrefs != null && mLowPower != null
                 && !mConfig.hasFeature(FEATURE_CABC)) {
             advancedPrefs.removePreference(mLowPower);
             mLowPower = null;
         }
 
-        mColorEnhancement = findPreference(KEY_LIVE_DISPLAY_COLOR_ENHANCE);
+        mColorEnhancement = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_COLOR_ENHANCE);
         if (advancedPrefs != null && mColorEnhancement != null
                 && !mConfig.hasFeature(FEATURE_COLOR_ENHANCEMENT)) {
             advancedPrefs.removePreference(mColorEnhancement);
             mColorEnhancement = null;
         }
 
-        mPictureAdjustment = findPreference(KEY_PICTURE_ADJUSTMENT);
+        mPictureAdjustment = (PictureAdjustment) findPreference(KEY_PICTURE_ADJUSTMENT);
         if (advancedPrefs != null && mPictureAdjustment != null &&
                     !mConfig.hasFeature(FEATURE_PICTURE_ADJUSTMENT)) {
             advancedPrefs.removePreference(mPictureAdjustment);
             mPictureAdjustment = null;
         }
 
-        mDisplayColor = findPreference(KEY_DISPLAY_COLOR);
+        mDisplayColor = (DisplayColor) findPreference(KEY_DISPLAY_COLOR);
         if (advancedPrefs != null && mDisplayColor != null &&
                 !mConfig.hasFeature(FEATURE_COLOR_ADJUSTMENT)) {
             advancedPrefs.removePreference(mDisplayColor);
