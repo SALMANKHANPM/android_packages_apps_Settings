@@ -161,8 +161,8 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 import com.android.settings.wifi.tether.WifiTetherSettings;
+
 import com.raven.lair.RavenLair;
-import com.android.settings.livedisplay.LiveDisplaySettings;
 import com.raven.lair.fragments.GamingMode;
 
 public class SettingsGateway {
@@ -314,7 +314,6 @@ public class SettingsGateway {
             InteractAcrossProfilesDetails.class.getName(),
             MediaControlsSettings.class.getName(),
             RavenLair.class.getName(),
-            LiveDisplaySettings.class.getName(),
             RunningServices.class.getName(),
             GamingMode.class.getName()
     };
