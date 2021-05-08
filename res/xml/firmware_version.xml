@@ -35,13 +35,21 @@
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
-    <!-- Corvus version -->
+     <!-- Corvus version -->
+     <Preference
+          android:key="crvs_version"
+          android:title="@string/crvs_version"
+          android:summary="@string/summary_placeholder"
+          settings:enableCopying="true"
+          settings:controller="com.android.settings.deviceinfo.firmwareversion.CrvsVersionPreferenceController"/>
+
+    <!-- Device name -->
     <Preference
-        android:key="corvus_version"
-        android:title="@string/corvus_version"
+        android:key="about_device_name"
+        android:title="@string/about_device_name"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.CorvusVersionPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.AboutDeviceNamePreferenceController"/>
 
     <!-- Corvus maintainer -->
     <Preference
@@ -82,14 +90,6 @@
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
 
-    <!-- Build date -->
-    <Preference 
-        android:key="build_date"
-        android:title="@string/build_date"
-        android:summary="@string/build_date_default"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.BuildDatePreferenceController"/>
-
     <!-- Kernel -->
     <Preference
         android:key="kernel_version"
@@ -113,5 +113,13 @@
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.SimpleBuildNumberPreferenceController"/>
+		
+    <!-- Build date -->
+    <Preference 
+        android:key="build_date"
+        android:title="@string/build_date"
+        android:summary="@string/build_date_default"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.BuildDatePreferenceController"/>
 
 </PreferenceScreen>

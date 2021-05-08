@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The AospExtended Project
+ * Copyright (C) 2019 The Evolution X Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,31 +18,28 @@ package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
 import android.os.SystemProperties;
-import android.text.TextUtils;
-
-import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.R;
-import com.android.settings.Utils;
 import com.android.settings.core.BasePreferenceController;
 
-public class CorvusVersionPreferenceController extends BasePreferenceController {
+public class AboutDeviceNamePreferenceController extends BasePreferenceController {
 
-    @VisibleForTesting
-    static final String CORVUS_VERSION_PROPERTY = "ro.corvus.codename";
+    private static final String TAG = "AboutDeviceNameCtrl";
 
-    public CorvusVersionPreferenceController(Context context, String preferenceKey) {
-        super(context, preferenceKey);
+    private static final String KEY_DEVICE_NAME_PROP = "ro.corvus.device";
+
+    public AboutDeviceNamePreferenceController(Context context, String key) {
+        super(context, key);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return !TextUtils.isEmpty(SystemProperties.get(CORVUS_VERSION_PROPERTY)) ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return AVAILABLE;
     }
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get(CORVUS_VERSION_PROPERTY,
-                mContext.getString(R.string.device_info_default));
+        return SystemProperties.get(KEY_DEVICE_NAME_PROP,
+                mContext.getString(R.string.unknown));
     }
 }
