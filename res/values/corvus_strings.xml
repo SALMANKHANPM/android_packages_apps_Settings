@@ -116,8 +116,11 @@
     <string name="battery_stats_reset">Reset stats</string>
     <string name="battery_stats_message">Battery history stats are going to be reset</string>
 
-    <!-- Themes -->
-    <string name="corvus_themes_title">Raven Themes</string>
+    <!-- Corvus Settings -->
+    <string name="corvus_settings_title">Corvus Settings</string>
+    <string name="corvus_settings_summary">All the customisation you ever need</string>
+    <string name="ravenlair_title">Ravenlair</string>
+    <string name="corvus_themes_title">Themes</string>
     <string name="corvus_themes_summary">Lets get some colors to Fly High</string>
 
     <!-- Screenshot sound -->
