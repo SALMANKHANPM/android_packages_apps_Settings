@@ -30,9 +30,14 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+
+import androidx.transition.AutoTransition;
+import androidx.transition.TransitionManager;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
@@ -51,8 +56,12 @@ import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.drawable.CircleFramedDrawable;
 
 public class SettingsHomepageActivity extends FragmentActivity {
-    private CardView mRavenLair;
-    private CardView mRavenThemes;
+    TextView mRavenLair;
+    TextView mRavenThemes;
+    ImageView arrow;
+    CardView cardView;
+    LinearLayout hiddenView;
+    LinearLayout visibleView;
 
     Context context;
     ImageView avatarView;
@@ -77,18 +86,47 @@ public class SettingsHomepageActivity extends FragmentActivity {
         FeatureFactory.getFactory(this).getSearchFeatureProvider()
                 .initSearchToolbar(this /* activity */, toolbar, SettingsEnums.SETTINGS_HOMEPAGE);
 
-        avatarView = root.findViewById(R.id.account_avatar);
+	avatarView = root.findViewById(R.id.account_avatar);
         avatarView.setImageDrawable(getCircularUserIcon(context));
         avatarView.setOnClickListener(new View.OnClickListener() {
-            @Override
+	    @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
+		Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
                 startActivity(intent);
+	    }
+	});
+
+	getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
+
+	final ImageView avatarView = findViewById(R.id.account_avatar);
+        getLifecycle().addObserver(new AvatarViewMixin(this, avatarView));
+        getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
+
+	visibleView = findViewById(R.id.parent_layout);
+        hiddenView = findViewById(R.id.hidden_view);
+        cardView = findViewById(R.id.corvus_settings_card);
+	cardView.setBackground(getDrawable(R.drawable.version_bg));
+        arrow = findViewById(R.id.expand_card_arrow);
+	cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (hiddenView.getVisibility() == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition(cardView,
+                            new AutoTransition());
+                    hiddenView.setVisibility(View.GONE);
+                    visibleView.setVisibility(View.VISIBLE);
+                    arrow.setImageResource(R.drawable.arrow_right);
+                } else {
+                    TransitionManager.beginDelayedTransition(cardView,
+                            new AutoTransition());
+                    hiddenView.setVisibility(View.VISIBLE);
+                    visibleView.setVisibility(View.GONE);
+                    arrow.setImageResource(R.drawable.arrow_left);
+                }
             }
         });
 
-        getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
 
         // Custom Cardviews
         mRavenLair = findViewById(R.id.raven_lair);
@@ -151,7 +189,7 @@ public class SettingsHomepageActivity extends FragmentActivity {
         view.requestFocus();
     }
 
-    private Drawable getCircularUserIcon(Context context) {
+	private Drawable getCircularUserIcon(Context context) {
         Bitmap bitmapUserIcon = mUserManager.getUserIcon(UserHandle.myUserId());
 
         if (bitmapUserIcon == null) {
