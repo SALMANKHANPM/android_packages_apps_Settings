@@ -107,6 +107,7 @@
     <!-- Volume Steps -->
     <Preference
         android:key="volume_steps"
+	android:icon="@drawable/ic_volume_steps"
         android:title="@string/volume_steps_title"
         android:summary="@string/volume_steps_summary"
         android:fragment="com.android.settings.corvus.sound.VolumeSteps"

@@ -36,6 +36,7 @@
     <com.android.settings.display.darkmode.DarkModePreference
         android:key="dark_ui_mode"
         android:title="@string/dark_ui_mode"
+	android:icon="@drawable/ic_dark_mode"
         android:fragment="com.android.settings.display.darkmode.DarkModeSettingsFragment"
         android:widgetLayout="@null"
         settings:widgetLayout="@null"
@@ -60,6 +61,7 @@
     
     <com.android.settingslib.RestrictedPreference
         android:key="wallpaper"
+	android:icon="@drawable/ic_wallpaper"
         android:title="@string/wallpaper_settings_title"
         settings:keywords="@string/keywords_display_wallpaper"
         settings:useAdminDisabledSummary="true"
@@ -86,12 +88,14 @@
 
     <SwitchPreference
         android:key="auto_rotate"
+	android:icon="@drawable/ic_auto_rotate_screen"
         android:title="@string/accelerometer_title"
         settings:keywords="@string/keywords_auto_rotate"
         settings:controller="com.android.settings.display.AutoRotatePreferenceController" />
 
     <Preference
         android:key="color_mode"
+	android:icon="@drawable/ic_screen_colors"
         android:title="@string/color_mode_title"
         android:fragment="com.android.settings.display.ColorModePreferenceFragment"
         settings:controller="com.android.settings.display.ColorModePreferenceController"
@@ -111,6 +115,7 @@
 
     <com.android.settings.display.FontDialogPreference
         android:key="custom_font"
+	android:icon="@drawable/ic_font_style"
         android:title="@string/font_picker_title"
         android:persistent="false" />
 
@@ -129,6 +134,7 @@
 
     <com.android.settings.display.DensityPreference
         android:key="density"
+	android:icon="@drawable/ic_smallest_width"
         android:title="@string/developer_smallest_width" />
 
     <SwitchPreference
@@ -167,6 +173,7 @@
 
     <SwitchPreference
         android:key="enable_blurs_on_windows"
+	android:icon="@drawable/ic_blur_toggle"
         android:title="@string/enable_blurs_on_windows_title"
         android:summary="@string/enable_blurs_on_windows_summary" />
 
