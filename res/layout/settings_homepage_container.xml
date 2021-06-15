@@ -97,8 +97,8 @@
                 android:text="@string/ravenlair_title"
 	        android:textColor="?android:attr/colorAccent" />
 
-	    <View
-                android:layout_width="100dp"
+	    <Space
+                android:layout_width="50dp"
                 android:layout_height="0dp"/>
 
             <TextView
@@ -110,6 +110,21 @@
                 android:drawableTop="@drawable/ic_homepage_corvus_themes"
                 android:text="@string/corvus_themes_title"
 		android:textColor="?android:attr/colorAccent" />
+
+	    <Space
+                android:layout_width="50dp"
+                android:layout_height="0dp"/>
+
+            <TextView
+                android:id="@+id/corvus_ota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_homepage_corvus_ota"
+                android:text="@string/corvus_ota_title"
+		android:visibility="gone"
+                android:textColor="?android:attr/colorAccent" />
 
         </LinearLayout>
 

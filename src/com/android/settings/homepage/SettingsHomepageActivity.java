@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.os.SystemProperties;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -56,8 +57,12 @@ import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.drawable.CircleFramedDrawable;
 
 public class SettingsHomepageActivity extends FragmentActivity {
+
+    private static final String ROM_RELEASETYPE_PROP = "ro.corvus.build.type";
+
     TextView mRavenLair;
     TextView mRavenThemes;
+    TextView mCorvusOTA;
     ImageView arrow;
     CardView cardView;
     LinearLayout hiddenView;
@@ -103,6 +108,8 @@ public class SettingsHomepageActivity extends FragmentActivity {
         getLifecycle().addObserver(new AvatarViewMixin(this, avatarView));
         getLifecycle().addObserver(new HideNonSystemOverlayMixin(this));
 
+	String crvsReleasetype =  SystemProperties.get(ROM_RELEASETYPE_PROP);
+
 	visibleView = findViewById(R.id.parent_layout);
         hiddenView = findViewById(R.id.hidden_view);
         cardView = findViewById(R.id.corvus_settings_card);
@@ -130,7 +137,6 @@ public class SettingsHomepageActivity extends FragmentActivity {
 
         // Custom Cardviews
         mRavenLair = findViewById(R.id.raven_lair);
-        mRavenThemes = findViewById(R.id.raven_themes);
         mRavenLair.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
             Intent nIntent = new Intent(Intent.ACTION_MAIN);
@@ -140,6 +146,7 @@ public class SettingsHomepageActivity extends FragmentActivity {
         }
     });
 
+	mRavenThemes = findViewById(R.id.raven_themes);
         mRavenThemes.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
             Intent nIntent = new Intent(Intent.ACTION_MAIN);
@@ -149,7 +156,19 @@ public class SettingsHomepageActivity extends FragmentActivity {
         }
     });
 
-
+	mCorvusOTA = findViewById(R.id.corvus_ota);
+	String officialTag = "Official";
+	if(crvsReleasetype.equals(officialTag)){
+	    mCorvusOTA.setVisibility(View.VISIBLE);
+	}
+        mCorvusOTA.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent nIntent = new Intent(Intent.ACTION_MAIN);
+            nIntent.setClassName("com.corvus.ota",
+                "com.corvus.ota.MainActivity");
+            startActivity(nIntent);
+        }
+    });
 
         if (!getSystemService(ActivityManager.class).isLowRamDevice()) {
             // Only allow contextual feature on high ram devices.

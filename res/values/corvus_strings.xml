@@ -121,6 +121,7 @@
     <string name="corvus_settings_summary">All the customisation you ever need</string>
     <string name="ravenlair_title">Ravenlair</string>
     <string name="corvus_themes_title">Themes</string>
+    <string name="corvus_ota_title">RavenDesk</string>
     <string name="corvus_themes_summary">Lets get some colors to Fly High</string>
 
     <!-- Screenshot sound -->
