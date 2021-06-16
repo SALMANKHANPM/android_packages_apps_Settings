@@ -199,7 +199,7 @@
 
     <string name="about_device_name">Device</string>
 
-    <!-- About phone screen, aosip version -->
+    <!-- About phone screen, corvus version -->
     <string name="crvs_version">Corvus version</string>
     <string name="crvs_version_default">Unknown</string>
     <string name="keywords_durex_version">corvus version</string>
@@ -208,6 +208,11 @@
     <string name="build_date">Build date</string>
     <string name="build_date_default">2019-01-01-0000</string>
     <string name="keywords_build_date">build date, build info</string>
+
+    <!-- About phone screen, build date -->
+    <string name="build_type">Build type</string>
+    <string name="build_type_default">Unknown</string>
+    <string name="keywords_build_type">build type, build info</string>
 
     <!-- App Lock -->
     <string name="applock_title">App locker</string>
